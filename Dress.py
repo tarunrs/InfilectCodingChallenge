@@ -1,7 +1,11 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, Column, Integer, String, Text
+# Create DB connection - Edit the below line to include your username and password
+engine = create_engine('postgresql://tarun:tarun123@localhost:5432/jabong')
 
+#Declare an instance of the Base class for mapping tables
 Base = declarative_base()
+ 
 class Dress(Base):
     __tablename__ = 'dress'
     dress_id = Column(Integer, primary_key=True)
@@ -39,4 +43,11 @@ class Dress(Base):
       self.neck = details["neck"]
       self.sku = details["sku"]
       self.is_party = 0
+      
+#Create the table using the metadata attribute of the base class
+Base.metadata.create_all(engine)
+
+#Close the connection
+engine.dispose()
+
 
