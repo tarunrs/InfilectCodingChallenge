@@ -14,7 +14,8 @@ Session = sessionmaker(bind=engine)
 session= Session()
 
 stops = set(stopwords.words("english"))
-#stops.add("party")
+stops.add("party")
+stops.add("parties")
 stemmer = PorterStemmer()
 
 def dress_to_words(dress):
