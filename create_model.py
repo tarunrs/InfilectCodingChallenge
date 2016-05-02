@@ -47,9 +47,6 @@ for dress in session.query(Dress).order_by(desc(Dress.is_party)).all():
   
 # Create bag of words feature vectors
 vectorizer = CountVectorizer(analyzer = "word",   \
-                             tokenizer = None,    \
-                             preprocessor = None, \
-                             stop_words = None,   \
                              max_features = 5000)  
 features = vectorizer.fit_transform(dress_words)
 features = features.toarray()
